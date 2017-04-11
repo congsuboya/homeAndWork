@@ -12,7 +12,7 @@ import {
   View,
 } from 'react-native';
 
-import {Scene, Router} from 'react-native-router-flux';
+import { Scene, Router } from 'react-native-router-flux';
 
 import OneHome from './src/oneHome.js';
 import TwoHome from './src/twoHome.js';
@@ -21,11 +21,24 @@ import ThreeHome from './src/threeHome.js';
 
 export default class myFirst extends Component {
   render() {
-   return <Router>
+    return <Router>
       <Scene key="root">
-        <Scene key="oneHome" component={OneHome} title="OneHome" initial/>
-        <Scene key="twoHome" component={TwoHome} title="TwoHome"/>
-        <Scene key="threeHome" component={ThreeHome} title='ThreeHome'/>
+        <Scene key="oneHome" component={OneHome} title="OneHome" initial />
+        <Scene key="twoHome" component={TwoHome} title="TwoHome" />
+        <Scene key="threeHome" component={ThreeHome} title='ThreeHome' />
+      </Scene>
+    </Router>
+  }
+}
+
+
+class MySecond extends Component {
+  render() {
+    return <Router>
+      <Scene key="root_second">
+        <Scene key="oneHome_second" component={OneHome} title="OneHome" initial />
+        <Scene key="twoHome_second" component={TwoHome} title="TwoHome" />
+        <Scene key="threeHome_second" component={ThreeHome} title='ThreeHome' />
       </Scene>
     </Router>
   }
@@ -49,5 +62,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+AppRegistry.registerComponent('MySecond', () => MySecond);
 
 AppRegistry.registerComponent('myFirst', () => myFirst);
