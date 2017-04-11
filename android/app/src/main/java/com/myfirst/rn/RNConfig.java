@@ -31,4 +31,13 @@ public class RNConfig extends ReactContextBaseJavaModule {
         Intent intent = new Intent(activity,NewActivity.class);
         activity.startActivity(intent);
     }
+
+    @ReactMethod
+    public void goBack(){
+        Activity activity = getCurrentActivity();
+        if (activity == null){
+            return;
+        }
+        activity.finish();
+    }
 }
