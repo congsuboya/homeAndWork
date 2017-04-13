@@ -24,6 +24,11 @@ export default class OneHome extends Component {
                         <Text style={{ fontSize: 16 }}>Go to TwoHome</Text>
                     </View>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={() => Actions.tab1_2()}>
+                    <View style={{ marginTop: 10 }} >
+                        <Text style={{ fontSize: 16 }}>go-To-tab1-2</Text>
+                    </View>
+                </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => NativeModules.Config.goBack()}>
                     <View style={{ marginTop: 10 }} >

@@ -115,15 +115,33 @@ class Router extends Component {
       }
       scenesMap = Actions.create(scenes, props.wrapBy);
     }
-
+    console.log('router-flux:scenesMap:' + JSON.stringify(scenesMap));
+    console.log('router-flux:myInitialState:' + JSON.stringify(global.myInitialState));
+    console.log('router-flux:props:' + JSON.stringify(Object.keys(this.props)));
     // eslint-disable-next-line no-unused-vars
     const { children, styles, scenes, reducer, createReducer, ...parentProps } = props;
-
     scenesMap.rootProps = parentProps;
 
-    const initialState = getInitialStateFromRoot(scenesMap);
+    const secondState = getInitialStateFromRoot(scenesMap);
+    let myInitialState = global.myInitialState;
+    if (this.props.myType != 'intial' && myInitialState && myInitialState.scenes) {
+      // scenesMap[scens]
+      const rootRoute = Object.keys(myInitialState.scenes).find(route => ({}).hasOwnProperty.call(myInitialState.scenes, route) && !myInitialState.scenes[route].parent);
+      const secondRootRoute = Object.keys(scenesMap).find(route => ({}).hasOwnProperty.call(scenesMap, route) && !scenesMap[route].parent);
+      scenesMap[secondRootRoute].parent = rootRoute;
+      myInitialState.scenes[rootRoute].children.push.apply(myInitialState.scenes[rootRoute].children,scenesMap[secondRootRoute].children);
+      alert(rootRoute);
+      myInitialState.scenes = Object.assign(myInitialState.scenes, scenesMap);
+      secondState.children[0].parent = rootRoute
+      myInitialState.children.push(secondState.children[0]);
+      myInitialState.index++;
+    } else {
+      myInitialState = getInitialStateFromRoot(scenesMap);
+    }
+    const initialState = myInitialState;
+    // scenesMap = global.myInitialState.scenes;
     const reducerCreator = props.createReducer || Reducer;
-    console.log('router-flux:initialState:' + JSON.stringify(initialState));
+    console.log('router-flux:initialState:33' + JSON.stringify(initialState));
     const routerReducer = props.reducer || (
       reducerCreator({
         initialState,
@@ -137,8 +155,10 @@ class Router extends Component {
     if (!navigationState) {
       return null;
     }
-    global.myInitialState = navigationState;
-    console.log('router-flux:navigationState:' + JSON.stringify(global[this.props.myType]));
+    if (this.props.myType == 'intial') {
+      global.myInitialState = navigationState;
+    }
+    console.log('router-flux:navigationState:' + JSON.stringify(global.myInitialState));
     Actions.get = key => findElement(navigationState, key, ActionConst.REFRESH);
     Actions.callback = (props) => {
       const constAction = (props.type && ActionMap[props.type] ? ActionMap[props.type] : null);
