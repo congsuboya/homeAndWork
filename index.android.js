@@ -108,7 +108,6 @@ class FlatListDemo extends Component {
     }
   }
   render() {
-
     return (
       <View style={{ flex: 1 }}>
         <FlatList
@@ -145,4 +144,4 @@ AppRegistry.registerComponent('FlatListDemo', () => FlatListDemo);
 
 AppRegistry.registerComponent('MySecond', () => MySecond);
 
-AppRegistry.registerComponent('myFirst', () => FlatListDemo);
+AppRegistry.registerComponent('myFirst', () => myFirst);

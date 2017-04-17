@@ -13,13 +13,14 @@ export default class OneHome extends Component {
         return (
             <View style={{ flex: 1, backgroundColor: 'yellow', alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ fontSize: 16 }}>OneHome</Text>
-                <TouchableOpacity onPress={() => { Actions.twoHome(); 
+                <TouchableOpacity onPress={() => {
+                    Actions.twoHome();
                     try {
-                        {/*let a = require('111')*/}
+                        {/*let a = require('111')*/ }
                     } catch (error) {
-                        
+
                     }
-                     }}>
+                }}>
                     <View style={{ marginTop: 10 }} >
                         <Text style={{ fontSize: 16 }}>Go to TwoHome</Text>
                     </View>
@@ -30,7 +31,7 @@ export default class OneHome extends Component {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => NativeModules.Config.goBack()}>
+                <TouchableOpacity onPress={() => { Actions.popFnish(); NativeModules.Config.goBack() }}>
                     <View style={{ marginTop: 10 }} >
                         <Text style={{ fontSize: 16 }}>关闭</Text>
                     </View>
