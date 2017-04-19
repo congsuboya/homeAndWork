@@ -18,21 +18,23 @@ export default class ImmutableDemo extends Component {
             })
         }
     }
+
+    shouldComponentUpdate(nextProps,nextState){
+        return !(nextState.object === this.state.object)
+    }
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: 'green', alignItems: 'center', justifyContent: 'center' }}>
                 <TouchableOpacity onPress={() => {
-                    let templist = this.state.object.get('list');
-                    let tempItem = this.state.object.get('list').map((item)=>item.set('age', 30));
-                    this.setState({
-
-                    })
+                    this.setState(({ object }) => ({
+                        object: object.update('list', v =>v.map((item) => item.update('age', v=>v+10)))
+                    }))
                 }}>
                     <View style={{ width: 60, height: 50, backgroundColor: 'yellow' }} >
-                        <Text style={{ fontSize: 26 }} >{this.state.object.get('list').get(0).get('age')}</Text>
-                    </View>
+                    <Text style={{ fontSize: 26 }} >{this.state.object.get('list').get(0).get('age')}</Text>
+                </View>
                 </TouchableOpacity>
-            </View>
+            </View >
         )
     }
 } 
