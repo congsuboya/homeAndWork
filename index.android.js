@@ -139,9 +139,11 @@ class FlatListDemo extends Component {
   }
 }
 
+import Demo from'./immutableSrc';
+
 AppRegistry.registerComponent('FlatListDemo', () => FlatListDemo);
 
 
 AppRegistry.registerComponent('MySecond', () => MySecond);
 
-AppRegistry.registerComponent('myFirst', () => myFirst);
+AppRegistry.registerComponent('myFirst', () => Demo);
