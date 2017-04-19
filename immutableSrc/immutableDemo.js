@@ -25,7 +25,7 @@ export default class ImmutableDemo extends Component {
                     let templist = this.state.object.get('list');
                     let tempItem = this.state.object.get('list').map((item)=>item.set('age', 30));
                     this.setState({
-
+                        
                     })
                 }}>
                     <View style={{ width: 60, height: 50, backgroundColor: 'yellow' }} >
