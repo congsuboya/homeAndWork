@@ -35,6 +35,8 @@ export const ActionMap = {
   [ActionConst.FOCUS]: ActionConst.FOCUS,
   [ActionConst.PUSH_OR_POP]: ActionConst.PUSH_OR_POP,
   [ActionConst.ANDROID_BACK]: ActionConst.ANDROID_BACK,
+  [ActionConst.BACK_ACTION_FINISH]: ActionConst.BACK_ACTION_FINISH,
+  
 };
 
 function filterParam(data) {

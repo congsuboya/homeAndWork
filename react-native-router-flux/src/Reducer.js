@@ -58,7 +58,7 @@ function refreshTopChild(children, refresh) {
 function inject(state, action, props, scenes) {
   const condition = ActionMap[action.type] === ActionConst.REFRESH ? state.key === props.key ||
     state.sceneKey === action.key : state.sceneKey === props.parent;
-  // console.log("INJECT:", action.key, state.sceneKey, condition);
+  console.log("INJECT:", action.key, state.sceneKey, condition);
   if (!condition) {
     if (state.children) {
       const res = state.children.map(el => inject(el, action, props, scenes));
@@ -120,7 +120,6 @@ function inject(state, action, props, scenes) {
     case ActionConst.BACK:
     case ActionConst.BACK_ACTION: {
       assert(!state.tabs, 'pop() operation cannot be run on tab bar (tabs=true)');
-
       if (state.index === 0) {
         return state;
       }
@@ -138,7 +137,6 @@ function inject(state, action, props, scenes) {
           'The data is the number of scenes you want to pop, ' +
           "it must be smaller than scenes stack's length.");
       }
-
       return {
         ...state,
         index: state.index - popNum,
@@ -321,6 +319,7 @@ export function getCurrent(state) {
 function update(state, action) {
   // find parent in the state
   const props = { ...state.scenes[action.key], ...action };
+  console.log('router-flux:action:update:' + JSON.stringify(props));
   assert(props.parent, `No parent is defined for route=${action.key}`);
   return inject(state, action, props, state.scenes);
 }
@@ -333,14 +332,24 @@ function reducer({ initialState, scenes }) {
     let state = stateParam;
     let action = actionParam;
     console.log('router-flux:state:' + JSON.stringify(state));
-    console.log('router-flux:action:' + JSON.stringify(action));
-    state = state || { ...initialState, scenes };
+    if (state == null) {
+      console.log('router-flux:state:333:' + JSON.stringify(scenes));
+    }
+    console.log('router-flux:action:' + action.key + '------' + JSON.stringify(action));
+    if (initialState.scenes && state == null) {
+      state = { ...initialState };
+    } else {
+      state = state || { ...initialState, scenes };
+    }
     assert(action, 'action should be defined');
     assert(action.type, 'action type should be defined');
     assert(state.scenes, 'state.scenes is missed');
 
     if (action.key) {
+      console.log('router-flux:actions-step:0011' + action.type)
       if (ActionMap[action.type] === ActionConst.REFRESH) {
+        console.log('router-flux:actions-step:0022' + action.type)
+
         let key = action.key;
         let child = findElement(state, key, action.type) || state.scenes[key];
         let sceneKey = child.sceneKey;
@@ -363,6 +372,7 @@ function reducer({ initialState, scenes }) {
 
         // console.log("REFRESH ACTION:", action);
       } else {
+        console.log('router-flux:actions-step:0033' + action.type)
         const scene = state.scenes[action.key];
         assert(scene, `missed route data for key=${action.key}`);
         // clone scene
@@ -377,15 +387,19 @@ function reducer({ initialState, scenes }) {
         ActionMap[action.type] === ActionConst.ANDROID_BACK ||
         ActionMap[action.type] === ActionConst.POP_AND_REPLACE ||
         ActionMap[action.type] === ActionConst.REFRESH ||
-        ActionMap[action.type] === ActionConst.POP_TO||
+        ActionMap[action.type] === ActionConst.POP_TO ||
         ActionMap[action.type] === ActionConst.BACK_ACTION_FINISH) {
+        console.log('router-flux:actions-step:111' + action.type)
+        console.log('router-flux:action:else:' + JSON.stringify(action));
         if (!action.key && !action.parent) {
           action = { ...getCurrent(state), ...action };
         }
+        console.log('router-flux:action:else-if:' + JSON.stringify(action));
       }
 
       // Find the parent and index of the future state
       if (ActionMap[action.type] === ActionConst.POP_TO) {
+        console.log('router-flux:actions-step:222' + action.type)
         /*
          * if a string is passed as only argument
          * Actions.filterParam will put it in the data property
@@ -405,6 +419,7 @@ function reducer({ initialState, scenes }) {
 
         // target is child of a node
         if (!targetEl.children) {
+          console.log('router-flux:actions-step:211' + action.type)
           const targetParent = findElement(state, targetEl.parent, action.type);
           assert(targetParent, `Cannot find parent for target ${target}`);
           parent = targetParent.sceneKey;
@@ -425,11 +440,14 @@ function reducer({ initialState, scenes }) {
         ActionMap[action.type] === ActionConst.POP_AND_REPLACE) {
         const parent = action.parent || state.scenes[action.key].parent;
         let el = findElement(state, parent, action.type);
+        console.log('router-flux:actions-step:333' + action.type)
+
         while (el.parent && (el.children.length <= 1 || el.tabs)) {
           el = findElement(state, el.parent, action.type);
           assert(el, `Cannot find element for parent=${el.parent} within current state`);
         }
         action.parent = el.sceneKey;
+        console.log('router-flux:actions-step:6666' + action)
       }
     }
 
@@ -447,8 +465,8 @@ function reducer({ initialState, scenes }) {
       case ActionConst.ANDROID_BACK:
       case ActionConst.BACK_ACTION_FINISH:
         return update(state, action);
-
       default:
+        console.log('router-flux:actions-step:5555' + action.type)
         return state;
 
     }

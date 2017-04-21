@@ -146,4 +146,4 @@ AppRegistry.registerComponent('FlatListDemo', () => FlatListDemo);
 
 AppRegistry.registerComponent('MySecond', () => MySecond);
 
-AppRegistry.registerComponent('myFirst', () => Demo);
+AppRegistry.registerComponent('myFirst', () => myFirst);

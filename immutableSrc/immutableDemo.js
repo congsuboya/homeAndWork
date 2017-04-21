@@ -14,12 +14,12 @@ export default class ImmutableDemo extends Component {
         this.state = {
             object: fromJS({
                 name: 'heihei',
-                list: [{ name: 'nihao22', age: 18 }, { name: 'nihao', age: 18 }]
+                list: [{ name: 'nihao22', age: 19 }, { name: 'nihao', age: 18 }]
             })
         }
     }
 
-    shouldComponentUpdate(nextProps,nextState){
+    shouldComponentUpdate(nextProps, nextState) {
         return !(nextState.object === this.state.object)
     }
     render() {
@@ -27,12 +27,17 @@ export default class ImmutableDemo extends Component {
             <View style={{ flex: 1, backgroundColor: 'green', alignItems: 'center', justifyContent: 'center' }}>
                 <TouchableOpacity onPress={() => {
                     this.setState(({ object }) => ({
-                        object: object.update('list', v =>v.map((item) => item.update('age', v=>v+10)))
+                        object: object.update('list', v => v.map((item) => {
+                            if (item.get('age') == 19) {
+                                item = item.update('age', v => v + 10)
+                            }
+                            return item
+                        }))
                     }))
                 }}>
                     <View style={{ width: 60, height: 50, backgroundColor: 'yellow' }} >
-                    <Text style={{ fontSize: 26 }} >{this.state.object.get('list').get(0).get('age')}</Text>
-                </View>
+                        <Text style={{ fontSize: 26 }} >{this.state.object.get('list').get(0).get('age')}</Text>
+                    </View>
                 </TouchableOpacity>
             </View >
         )

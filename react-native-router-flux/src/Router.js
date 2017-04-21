@@ -166,7 +166,7 @@ class Router extends Component {
     if (this.props.myType == 'intial') {
       global.myInitialState = navigationState;
     }
-    console.log('router-flux:navigationState:' + JSON.stringify(global.myInitialState));
+    console.log('router-flux:navigationState:' + JSON.stringify(navigationState));
     Actions.get = key => findElement(navigationState, key, ActionConst.REFRESH);
     Actions.callback = (props) => {
       const constAction = (props.type && ActionMap[props.type] ? ActionMap[props.type] : null);
