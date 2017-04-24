@@ -19,8 +19,6 @@ import {
 
 import { Scene, Router } from 'react-native-router-flux';
 
-// let a = require('111');
-
 import OneHome from './src/oneHome.js';
 import TwoHome from './src/twoHome.js';
 import ThreeHome from './src/threeHome.js';
