@@ -1,4 +1,4 @@
-package com.myfirst.activity;
+package com.routerdemo.activity;
 
 import com.facebook.react.ReactActivity;
 
@@ -14,5 +14,13 @@ public class NewRNActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
         return "MySecond";
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getReactInstanceManager()!=null){
+            getReactInstanceManager().onBackPressed();
+        }
+        super.onBackPressed();
     }
 }

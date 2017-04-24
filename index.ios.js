@@ -12,7 +12,7 @@ import {
   View
 } from 'react-native';
 
-export default class myFirst extends Component {
+export default class routerDemo extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('myFirst', () => myFirst);
+AppRegistry.registerComponent('routerDemo', () => routerDemo);

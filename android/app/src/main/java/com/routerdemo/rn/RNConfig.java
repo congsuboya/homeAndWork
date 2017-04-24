@@ -1,12 +1,13 @@
-package com.myfirst.rn;
+package com.routerdemo.rn;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.widget.Toast;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.myfirst.activity.NewActivity;
+import com.routerdemo.activity.NewActivity;
 
 /**
  * Created by liuchao on 2017/4/11.
@@ -39,5 +40,14 @@ public class RNConfig extends ReactContextBaseJavaModule {
             return;
         }
         activity.finish();
+    }
+
+    @ReactMethod
+    public void toast(){
+        Activity activity = getCurrentActivity();
+        if (activity == null){
+            return;
+        }
+        Toast.makeText(activity, "nihaoao", Toast.LENGTH_LONG).show();
     }
 }

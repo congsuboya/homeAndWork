@@ -1,4 +1,4 @@
-package com.myfirst.activity;
+package com.routerdemo.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.myfirst.R;
+import com.routerdemo.R;
+
 
 /**
  * Created by liuchao on 2017/4/11.
