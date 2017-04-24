@@ -1,4 +1,4 @@
-package com.routerdemo;
+package com.homeAndwork;
 
 import android.app.Application;
 
@@ -7,7 +7,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.routerdemo.rn.MyReactPackage;
+import com.homeAndwork.rn.MyReactPackage;
 
 import java.util.Arrays;
 import java.util.List;

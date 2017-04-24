@@ -1,4 +1,4 @@
-package com.routerdemo.rn;
+package com.homeAndwork.rn;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.widget.Toast;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.routerdemo.activity.NewActivity;
+import com.homeAndwork.activity.NewActivity;
 
 /**
  * Created by liuchao on 2017/4/11.

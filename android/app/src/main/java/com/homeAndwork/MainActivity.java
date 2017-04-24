@@ -1,4 +1,4 @@
-package com.routerdemo;
+package com.homeAndwork;
 
 import com.facebook.react.ReactActivity;
 

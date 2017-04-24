@@ -1,4 +1,4 @@
-package com.routerdemo.rn;
+package com.homeAndwork.rn;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
