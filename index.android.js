@@ -13,37 +13,24 @@ import {
 
 import { Scene, Router } from 'react-native-router-flux';
 
-import OneHome from './src/oneHome.js';
-import TwoHome from './src/twoHome.js';
-import ThreeHome from './src/threeHome.js';
+const window = Dimensions.get('window');
 
 
+import ExampleList from './exampleList';
+import FlatListDemo from './flatListSrc';
+import SectionListDemo from './flatListSrc/SectionListDemo';
 
-export default class myFirst extends Component {
+export default class HomeAndWork extends Component {
   render() {
-    return <Router myType={'intial'}>
-      <Scene key="root">
-        <Scene key="oneHome" component={OneHome} title="OneHome" initial />
-        <Scene key="twoHome" component={TwoHome} title="TwoHome" />
-        <Scene key="threeHome" component={ThreeHome} title='ThreeHome' />
-      </Scene>
-    </Router>
+    return (
+      <Router>
+        <Scene key="exampleList" component={ExampleList} title="exampleList" navigationBarStyle={{ backgroundColor: 'yellow' }} />
+        <Scene key="flatListDemo" component={FlatListDemo} title="FlatListDemo"/>
+        <Scene key="sectionListDemo" component={SectionListDemo} title="SectionListDemo"/>        
+      </Router>)
   }
 }
 
 
-class MySecond extends Component {
-  render() {
-    return <Router myType={'intial_second'}>
-      <Scene key="root_second">
-        <Scene key="oneHome_second" component={OneHome} title="OneHome" initial />
-        <Scene key="twoHome_second" component={TwoHome} title="TwoHome" />
-        <Scene key="threeHome_second" component={ThreeHome} title='ThreeHome' />
-      </Scene>
-    </Router>
-  }
-}
 
-AppRegistry.registerComponent('MySecond', () => MySecond);
-
-AppRegistry.registerComponent('routerDemo', () => myFirst);
+AppRegistry.registerComponent('homeAndWork', () => HomeAndWork);
