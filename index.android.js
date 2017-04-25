@@ -32,5 +32,6 @@ export default class HomeAndWork extends Component {
 }
 
 
+import Src from './src';
 
-AppRegistry.registerComponent('homeAndWork', () => HomeAndWork);
+AppRegistry.registerComponent('homeAndWork', () => Src);
