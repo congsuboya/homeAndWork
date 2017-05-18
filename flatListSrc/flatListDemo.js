@@ -25,6 +25,7 @@ class FlatListDemo extends Component {
         icon: './default_face.png'
       })
     }
+    this.num = 0;
   }
 
   _shouldItemUpdate(prev, next) {
@@ -48,15 +49,17 @@ class FlatListDemo extends Component {
           ref={(FlatList) => this.FlatList = FlatList}
           data={this.dataMap}
           renderItem={({ item }) => {
+          this.num = this.num + 1;
+            console.log('flatListDemonum', this.num);
             return (
-              <View style={{ height: 50, width: window.width, alignItems: 'center', flexDirection: 'row' }}>
+              <View style={{ height: 700, width: window.width, alignItems: 'center', flexDirection: 'row' }}>
                 <Text style={{ width: 70, textAlign: 'center' }} >{item.name}</Text>
                 <Image style={{ height: 45, width: 45 }} source={require('../image/default_face.png')} />
               </View>
             )
           }}
           keyExtractor={(item, number) => number}
-          getItemLayout={(data, index) => ({ length: 50.5, offset: 50.5 * index, index })}
+          getItemLayout={(data, index) => ({ length: 700.5, offset: 700.5 * index, index })}
           ItemSeparatorComponent={() => <View style={{ width: window.width, height: 0.5, backgroundColor: 'green' }} />}
           ListHeaderComponent={() => <View style={{ height: 50, width: window.width, backgroundColor: 'pink', alignItems: 'center', justifyContent: 'center' }}>
             <Text>我是头部组件</Text>
@@ -66,6 +69,7 @@ class FlatListDemo extends Component {
           onRefresh={() => alert('我刷新了')}
           refreshing={false}
           shouldItemUpdate={this._shouldItemUpdate}
+          initialNumToRender={1}
         />
 
         <View style={{ position: 'absolute', bottom: 0, right: 0, backgroundColor: 'yellow' }}>
