@@ -1,0 +1,4 @@
+
+
+
+export const XSY_REDUX_DEMO_CLICK  = 'XSY_REDUX_DEMO_CLICK';
