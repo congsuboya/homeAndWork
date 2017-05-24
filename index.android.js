@@ -22,6 +22,7 @@ const window = Dimensions.get('window');
 import ExampleList from './exampleList';
 import FlatListDemo from './flatListSrc';
 import SectionListDemo from './flatListSrc/SectionListDemo';
+import NavigationDemo from './navigationSrc';
 
 
 export default class HomeAndWork extends Component {
@@ -43,4 +44,4 @@ export default class HomeAndWork extends Component {
 
 
 
-AppRegistry.registerComponent('homeAndWork', () => HomeAndWork);
+AppRegistry.registerComponent('homeAndWork', () => NavigationDemo);
