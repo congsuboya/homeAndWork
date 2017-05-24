@@ -8,8 +8,11 @@ import {
   FlatList,
   Dimensions,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+
 } from 'react-native';
+
+import ViewPagerAndroid from './XsyAndroidViewPager';
 
 import { Scene, Router } from 'react-native-router-flux';
 
@@ -20,13 +23,20 @@ import ExampleList from './exampleList';
 import FlatListDemo from './flatListSrc';
 import SectionListDemo from './flatListSrc/SectionListDemo';
 
+
 export default class HomeAndWork extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+
   render() {
     return (
       <Router>
         <Scene key="exampleList" component={ExampleList} title="exampleList" navigationBarStyle={{ backgroundColor: 'yellow' }} />
-        <Scene key="flatListDemo" component={FlatListDemo} title="FlatListDemo"/>
-        <Scene key="sectionListDemo" component={SectionListDemo} title="SectionListDemo"/>        
+        <Scene key="flatListDemo" component={FlatListDemo} title="FlatListDemo" />
+        <Scene key="sectionListDemo" component={SectionListDemo} title="SectionListDemo" />
       </Router>)
   }
 }
