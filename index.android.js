@@ -24,6 +24,8 @@ import FlatListDemo from './flatListSrc';
 import SectionListDemo from './flatListSrc/SectionListDemo';
 import NavigationDemo from './navigationSrc';
 
+import Demo from './flatListScrollw/demo';
+
 
 export default class HomeAndWork extends Component {
 
@@ -44,4 +46,4 @@ export default class HomeAndWork extends Component {
 
 
 
-AppRegistry.registerComponent('homeAndWork', () => NavigationDemo);
+AppRegistry.registerComponent('homeAndWork', () => Demo);
