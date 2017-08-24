@@ -58,10 +58,10 @@ class SectionListDemo extends React.PureComponent {
         return (
             <View style={{ flex: 1, marginTop: 50 }}>
                 <SectionList
-                    ListHeaderComponent={()=>HeaderComponent}
-                    ListFooterComponent={()=>FooterComponent}
-                    ItemSeparatorComponent={()=>ItemSeparator}
-                    SectionSeparatorComponent={()=>SectionComponent}
+                    ListHeaderComponent={() => HeaderComponent}
+                    ListFooterComponent={() => FooterComponent}
+                    ItemSeparatorComponent={() => ItemSeparator}
+                    SectionSeparatorComponent={() => SectionComponent}
                     enableVirtualization={true}
                     onRefresh={() => alert('onRefresh: nothing to refresh :P')}
                     refreshing={false}
@@ -71,13 +71,27 @@ class SectionListDemo extends React.PureComponent {
                         {
                             key: 's1', data: [
                                 { title: 'Item In Header Section', text: 'Section s1', key: '0' },
+                                { title: 'Item In Header Section', text: 'Section s1', key: '1' },
+                                { title: 'Item In Header Section', text: 'Section s1', key: '2' },
+                                { title: 'Item In Header Section', text: 'Section s1', key: '3' },
+                                { title: 'Item In Header Section', text: 'Section s1', key: '4' },
+                                { title: 'Item In Header Section', text: 'Section s1', key: '5' },
+                                { title: 'Item In Header Section', text: 'Section s1', key: '6' },
                             ]
                         },
                         {
                             key: 's2', data: [
                                 { noImage: true, title: 'First item', text: 'Section s2', key: '0' },
                                 { noImage: true, title: 'Second item', text: 'Section s2', key: '1' },
-                                
+                                { noImage: true, title: 'Second item', text: 'Section s2', key: '2' },
+                                { noImage: true, title: 'Second item', text: 'Section s2', key: '3' },
+                                { noImage: true, title: 'Second item', text: 'Section s2', key: '4' },
+                                { noImage: true, title: 'Second item', text: 'Section s2', key: '5' },
+                                { noImage: true, title: 'Second item', text: 'Section s2', key: '6' },
+                                { noImage: true, title: 'Second item', text: 'Section s2', key: '7' },
+                                { noImage: true, title: 'Second item', text: 'Section s2', key: '8' },
+                                { noImage: true, title: 'Second item', text: 'Section s2', key: '9' },
+                                { noImage: true, title: 'Second item', text: 'Section s2', key: '10' },
                             ]
                         }
                     ]}
